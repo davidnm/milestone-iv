@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Tomatoes Shopping Cart</title>
+    <link href="./style.css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body>
+    <header>
+      <h1>Tomatoes Shopping Cart</h1>
+    </header>
+    <main>
+<!--
+      <section>
+        Markets showroom -> TBD
+      </section>
+      <section>
+        Funds showroom -> TBD
+      </section>
+    -->
+      <section>
+          <div>
+            <table>
+              <tr>
+                  <td class="tdmain">Type</td>
+                  <td class="tdmain">description</td>
+                  <td class="tdmain">price</td>
+                  <td class="tdmain">Quantity</td>
+                  <td class="tdmain"></td>
+                  <td class="tdmain">Total</td>
+
+                </tr>
+              <tr>
+                <td>
+                  <label for="hosting">raf tomato</label>
+                  <img src="https://www.comenaranjas.com/images/stories/virtuemart/product/tomate-raf.jpg" class="responsive_image">              
+                </td>
+                <td>
+                  It is a fruit of irregular shape with deep furrows that end in the center, oval and flattened at the ends. These grooves make it very recognizable and attest to its quality. Its color is deep green with touches approaching the black on top.
+                </td>
+                <td>
+                    £6.99
+                  </td>
+                <td>
+                    <form id="raf">
+                        <input type="number" name="quantity" min="0" id="test1">
+                       <!--input id="submitBtn" type="submit" /-->
+                      </form>
+                </td>
+                <td>
+                </td>
+                <td>
+                <div id="results1"></div>
+                  </td>
+              </tr>
+              <tr>
+                  <td>
+                    <label for="hosting">heirloom tomato</label>
+                    <img src="https://foodandstyle.com/wp-content/uploads/2009/07/IMG_9851-Hierloom-tomato-750.jpg" class="responsive_image">              
+                  </td>
+                  <td>
+                      Many heirloom tomatoes are sweeter and lack a genetic mutation that gives tomatoes a uniform red color at the cost of the fruit's taste.[2] Varieties bearing this mutation, which have been favored by industry since the 1940s, feature fruits with lower levels of carotenoids and a decreased ability to make sugar within the fruit.[3]
+                    </td>
+                  <td>
+                      £5.49
+                    </td>
+                  <td>
+                      <form id="heirloom">
+                          <input type="number" name="quantity" min="0" id="test2">
+                        </form>
+                  </td>
+                  <td>
+                  </td>
+                  <td>
+                  <div id="results2"></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tdTotal" colspan="5">TOTAL:</td>
+                    <td class="tdTotal">
+                      <div id="resultsTotal"></div>
+                    </td>
+                  </tr>
+    
+            </table>
+          </div>
+      </section>
+    </main>
+
+
+      
+    <script>
+      const form=document.getElementById('raf')
+      const input1=document.getElementById('test1')
+      const input2=document.getElementById('test2')
+      const submitBtn=document.getElementById('submitBtn')
+      const results = document.getElementById('results1')
+
+      const mult = function(a, b){
+      //return(a%15===0 ? "FizzBuzz" : (a%3===0 ? "Fizz" : (a%5===0 ? "Buzz" : a )));
+      return ('£'+Number(a)*Number(b));
+    }
+
+    const sum = function(a, b){
+      //return(a%15===0 ? "FizzBuzz" : (a%3===0 ? "Fizz" : (a%5===0 ? "Buzz" : a )));
+      return ('£'+(Number(a)+Number(b)));
+    }
+
+
+      const submitHandler = function(event){
+        // prevents form from reloading
+        event.preventDefault()
+        //clean ups results
+        results1.innerHTML =""
+        results2.innerHTML =""
+        resultsTotal.innerHTML =""
+
+        //console.log(event, event.target)
+       //console.log(input.value)
+
+ //populates results again
+          const newLi1 = document.createElement("p")
+          const newLi2 = document.createElement("p")
+          const newLiTotal = document.createElement("p")
+          newLi1.innerText = mult(input1.value,6.99 );
+          newLi2.innerText = mult(input2.value,5.49 );
+          newLiTotal.innerText = sum(input1.value*6.99,input2.value*5.49 );
+          //submitBtn.append(newLi)
+          results1.append(newLi1)
+          results2.append(newLi2)
+          resultsTotal.append(newLiTotal)
+
+      }
+      input1.onclick = submitHandler 
+      input2.onclick = submitHandler 
+
+
+//equivalent to
+//submit.addEventListener("onclick", submitHandler)
+    </script>
+    <script>
+    console.log("it works!")
+    </script>
+  </body>
+</html>
